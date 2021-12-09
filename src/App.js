@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Components/Person';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 // import Person from './Components/Person';
 import Book from './Components/Book';
 
@@ -11,7 +13,7 @@ class App extends Component {
       { id: 2, name: 'Book 2', writer: 'Wri 2' },
       { id: 3, name: 'Book 3', writer: 'Wri 3' }
     ]
-    // ,otherProp: "Other Prop of State"
+    , showBooks: true
   }
 
   // changeBookState = (newBoook) => {
@@ -53,35 +55,41 @@ class App extends Component {
     });
   }
 
+  toggleBooks = () => {
+    this.setState({ showBooks: !this.state.showBooks });
+    // console.log(this.state.showBooks);
+  }
 
   render() {
     const style = {
       borderBottom: "1px solid #009dea",
       paddingBottom: '5px'
     }
+    let books = null;
+    if (this.state.showBooks) {
+      books = this.state.books.map((book, index) => {
+        return (
+          <Book
+            name={book.name}
+            writer={book.writer}
+            delete={() => this.deleteBookState(index)}
+            key={book.id}
+            inputName={(event) => this.changeWithInputState(event, index)}
+          />
+        );
 
-    const books = this.state.books.map((book, index) => {
-      return (
-        <Book
-          name={book.name}
-          writer={book.writer}
-          delete={() => this.deleteBookState(index)}
-          key={book.id}
-          inputName={(event) => this.changeWithInputState(event, index)}
-        />
-      );
+      });
+    }
 
-    });
 
 
     return (
       <div className="App">
         <div className="border container mt-3 py-3">
           <div className="row">
-            <h1 style={style}>Book List</h1>
+            <h1 style={style}>Book List <a className="btn btn-secondary d-inline-block" onClick={this.toggleBooks}>{<FontAwesomeIcon icon={faBars} />}</a></h1>
+
             {books}
-
-
             {/* <Book
                 name={this.state.books[0].name}
                 writer={this.state.books[0].writer}
