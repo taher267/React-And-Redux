@@ -1,0 +1,55 @@
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Components/Person';
+// import Person from './Components/Person';
+import Book from './Components/Book';
+
+class App extends Component {
+    state = {
+        books: [
+            { name: 'Book 1', writer: 'Wri 1' },
+            { name: 'Book 2', writer: 'Wri 2' },
+            { name: 'Book 3', writer: 'Wri 3' }
+        ],
+        otherProp: "Other Prop of State"
+    }
+
+    changeBookState = () => {
+        this.setState({
+            books: [
+                { name: 'B0k 1', writer: 'Writer 1' },
+                { name: 'B0k 2', writer: 'Writer 2' },
+                { name: 'B0k 3', writer: 'Writer 3' }
+            ]
+        });
+    }
+    render() {
+        return (
+            <div className="App">
+                <div className="border container mt-3 py-3">
+                    <div className="row">
+                        <h1>Book List</h1>
+                        <button type="button" onClick={this.changeBookState} className="btn btn-primary">Change State</button>
+                        <Book
+                            name={this.state.books[0].name}
+                            writer={this.state.books[0].writer}
+                        />
+                        <Book
+                            name={this.state.books[1].name}
+                            writer={this.state.books[1].writer}
+                        />
+                        <Book
+                            name={this.state.books[2].name}
+                            writer={this.state.books[2].writer}
+                        />
+
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
+
+
+export default App;
