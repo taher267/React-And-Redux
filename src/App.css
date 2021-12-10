@@ -1,3 +1,7 @@
 .App {
   text-align: center;
 }
+a{text-decoration: none;}
+.menu-list li a{padding: 14px 20px; background: #d3d3d3; line-height: 18px; display: block; color: #fff;border-right:1px solid #fff; transition: .3s all ease-in-out;}
+.menu-list li:last-child a{border-right:0;}
+.menu-list li a:hover{background: #d3d3d383;}

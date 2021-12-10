@@ -72,6 +72,10 @@ class MainComponent extends Component {
 
         return (
             <div className="App">
+                <ul className="list-unstyled d-flex align-item-center justify-content-center bg-secondary menu-list">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/new-book">New Book</a></li>
+                </ul>
                 <div className="border container mt-3 py-3">
                     <div className="row">
                         <h1 style={style}>Book List <a className="btn btn-secondary d-inline-block" onClick={this.toggleBooks}>{<FontAwesomeIcon icon={faBars} />}</a></h1>
